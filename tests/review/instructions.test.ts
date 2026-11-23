@@ -74,4 +74,10 @@ describe('buildInstructions', () => {
     expect(result).not.toContain('## AGENTS.md')
     expect(result).not.toContain('## CLAUDE.md')
   })
+
+  test('tells the model every comment needs a failure path', async () => {
+    const result = await buildInstructions(makeConfig(dir))
+
+    expect(result).toContain('Every comment needs a `failurePath`')
+  })
 })
